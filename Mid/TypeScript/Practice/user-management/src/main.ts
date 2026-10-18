@@ -7,6 +7,7 @@ import { Request, Response, NextFunction } from "express";
 import cookieParser from "cookie-parser";
 import helmet from "helmet";
 import { join } from "path";
+import { ValidationPipe } from "./common/pipes";
 
 dotenv.config();
 
@@ -69,6 +70,8 @@ async function bootstrap() {
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     maxAge: 86400,
   });
+
+  app.useGlobalPipes(new ValidationPipe());
 
   await app.listen(parseInt(process.env.PORT as string));
 }
