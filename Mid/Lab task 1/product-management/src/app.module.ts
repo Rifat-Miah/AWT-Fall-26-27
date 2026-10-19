@@ -5,10 +5,14 @@ import { AppController } from "@/src/app.controller";
 import { AppService } from "@/src/app.service";
 import global_config from "@/config/global_config";
 import { BullModule } from "@nestjs/bull";
+import { ProductModule } from "./modules/product/product.module";
+import { EmployeeModule } from "./modules/employee/employee.module";
 
 @Module({
   imports: [
     PostgresDatabaseProviderModule,
+    ProductModule,
+    EmployeeModule,
 
     ConfigModule.forRoot({
       isGlobal: true,
