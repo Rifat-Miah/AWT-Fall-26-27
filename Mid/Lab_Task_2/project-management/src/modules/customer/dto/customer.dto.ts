@@ -1,41 +1,37 @@
-import { IsNotEmpty, IsOptional } from "class-validator";
+import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 
 export class CreateCustomerDto {
-  @IsNotEmpty()
-  name: string = "";
+  @IsString()
+  @IsNotEmpty({ message: "Name is required" })
+  name!: string;
 
-  @IsNotEmpty()
-  email: string = "";
+  @IsEmail()
+  @IsNotEmpty({ message: "Email is required" })
+  email!: string;
 
-  @IsNotEmpty()
-  phone: string = "";
+  @IsString()
+  @IsNotEmpty({ message: "Phone is required" })
+  phone!: string;
 
-  @IsNotEmpty()
-  address: string = "";
-
-  @IsOptional()
-  created_at?: Date = new Date();
-
-  @IsOptional()
-  updated_at?: Date = new Date();
+  @IsString()
+  @IsNotEmpty({ message: "Address is required" })
+  address!: string;
 }
 
 export class UpdateCustomerDto {
+  @IsString()
   @IsOptional()
-  name: string = "";
+  name!: string;
 
+  @IsEmail()
   @IsOptional()
-  email: string = "";
+  email!: string;
 
+  @IsString()
   @IsOptional()
-  phone: string = "";
+  phone!: string;
 
+  @IsString()
   @IsOptional()
-  address: string = "";
-
-  @IsOptional()
-  created_at?: Date = new Date();
-
-  @IsOptional()
-  updated_at?: Date = new Date();
+  address!: string;
 }
